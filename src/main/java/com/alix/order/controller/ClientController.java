@@ -1,11 +1,11 @@
 package com.alix.order.controller;
 
+import com.alix.order.dto.CartDTO;
 import com.alix.order.client.ProductClient;
 import com.alix.order.dataobject.ProductInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
@@ -36,5 +36,10 @@ public class ClientController {
         return "ok";
     }
 
+    @GetMapping("/productDecreaseStock")
+    public String productDecreaseStock(){
+        productClient.decreaseStock(Arrays.asList(new CartDTO("164103465734242707",2)));
+        return "ok";
+    }
 
 }
